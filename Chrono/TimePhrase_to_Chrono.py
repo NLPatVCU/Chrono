@@ -638,7 +638,8 @@ def buildChronoYear(s, chrono_id, chrono_list, flags):
         ref_StartSpan, ref_EndSpan = s.getSpan()
         abs_StartSpan = ref_StartSpan + startSpan
         abs_EndSpan = abs_StartSpan + abs(endSpan-startSpan)
-        chrono_year_entity = chrono.ChronoYearEntity(entityID=str(chrono_id) + "entity", start_span=abs_StartSpan, end_span=abs_EndSpan, value=int(text.translate(None, string.punctuation)))
+        table = str.maketrans(dict.fromkeys(string.punctuation))
+        chrono_year_entity = chrono.ChronoYearEntity(entityID=str(chrono_id) + "entity", start_span=abs_StartSpan, end_span=abs_EndSpan, value=int(text.translate(table)))
         chrono_id = chrono_id + 1
         flags["fourdigityear"] = True
 
