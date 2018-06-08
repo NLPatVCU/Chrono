@@ -2525,7 +2525,7 @@ def hasYear(tpentity, flags):
                     if rval is not None:
                         if rval >=1500 and rval<=2050:
                             start_idx, end_idx = r.span(1)
-                            return True, rval, start_idx, end_idx, flags
+                            return True, rval.group(0), start_idx, end_idx, flags
                         
         return False, None, None, None, flags #if no 4 digit year expressions were found return false            
 
