@@ -41,7 +41,7 @@ from nltk.stem.snowball import SnowballStemmer
 # from Chrono import chronoEntities as t6
 from Chrono import temporalTest as tt
 import dateutil.parser
-# import datetime
+import datetime
 # from Chrono import TimePhrase_to_Chrono
 from Chrono import TimePhraseEntity as tp
 import re
@@ -73,9 +73,14 @@ def getWhitespaceTokens(file_path):
 # @param file_path The path and file name of the dct file.
 # @return A datetime object
 def getDocTime(file_path):
-    file = open(file_path, "r")
-    text = file.read()
+    try:
+        file = open(file_path, "r")
+        text = file.read()
+    except FileNotFoundError:
+        print("Warning: No DCT file, using today's date...")
+        text = datetime.datetime.now().strftime("%m/%d/%Y")
     return(dateutil.parser.parse(text))
+
 
   
 ## Writes out the full XML file for all T6entities in list.
