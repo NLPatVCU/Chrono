@@ -2500,10 +2500,10 @@ def hasYear(tpentity, flags):
             if(re.search('([0-9]{1,2})[-/:]([0-9]{1,2})[-/:]([0-9]{4})',text)):
                 if  len(text.split("/")) == 3:
                     start_idx, end_idx = getSpan(text,re.compile("/").split(text)[2])    
-                    return True, re.compile("/").split(text)[2], text_start+start_idx, text_start+end_idx, flags
+                    return True, re.compile("/").split(text)[2].group(0), text_start+start_idx, text_start+end_idx, flags
                 elif len(text.split("-")) == 3:
                     start_idx, end_idx = getSpan(text,re.compile("-").split(text)[2])    
-                    return True, re.compile("-").split(text)[2], text_start+start_idx, text_start+end_idx, flags
+                    return True, re.compile("-").split(text)[2].group(0), text_start+start_idx, text_start+end_idx, flags
                 else:
                    return False, None, None, None, flags
             ## look for year at start of date
@@ -2511,10 +2511,10 @@ def hasYear(tpentity, flags):
             elif(re.search('([0-9]{4})[-/:]([0-9]{1,2})[-/:]([0-9]{1,2})',text)):
                 if  len(text.split("/")) == 3:
                     start_idx, end_idx = getSpan(text,re.compile("/").split(text)[0])    
-                    return True, re.compile("/").split(text)[0], text_start+start_idx, text_start+end_idx, flags
+                    return True, re.compile("/").split(text)[0].group(0), text_start+start_idx, text_start+end_idx, flags
                 elif len(text.split("-")) == 3:
                     start_idx, end_idx = getSpan(text,re.compile("-").split(text)[0])    
-                    return True, re.compile("-").split(text)[0], text_start+start_idx, text_start+end_idx, flags
+                    return True, re.compile("-").split(text)[0].group(0), text_start+start_idx, text_start+end_idx, flags
                 else:
                    return False, None, None, None, flags
             ## special case to look for c.yyyy
