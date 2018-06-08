@@ -2486,7 +2486,7 @@ def hasYear(tpentity, flags):
     
     text_lower = tpentity.getText().lower() 
     #remove all punctuation
-    text_norm = text_lower.translate(str.maketrans(",", ' ')).strip()
+    text_norm = text_lower.translate(str.maketrans(",", " ", ".", "\"")).strip()
     #convert to list
     text_list = text_norm.split(" ")
 
